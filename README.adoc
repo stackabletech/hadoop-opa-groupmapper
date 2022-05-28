@@ -1,0 +1,23 @@
+= hadoop-opa-groupmapper
+
+== Usage
+
+This project is not currently in a state where it would be useful to give usage advice.
+The code will evolve quickly and break often, if you are interested in using this, I am afraid you will have to look at the code and know what you are doing.
+
+That being said, as soon as this reaches a sort of stable state I will add information here.
+
+=== OPA
+
+Currently expects that Open Policy Agent is listening on http://localhost:8181. Run `opa run --server example.rego` in the repo folder to test an initial example.
+
+NOTE: The tests expect this example to be served under `localhost:8181` to be successful.
+
+=== Hadoop Group Mapper
+
+Assuming that you have a Hadoop service up and running:
+
+1. Run `mvn package`
+2. Enuser `target/opagroupmapper-1.0-SNAPSHOT.jar` is on the classpath of your Hadoop processes
+3. Set `hadoop.security.group.mapping` to `tech.stackable.hadoop.OpaGroupsMapping` in your `core-site.xml`
+4. Start Hadoop
