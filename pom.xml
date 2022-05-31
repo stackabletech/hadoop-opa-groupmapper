@@ -6,7 +6,7 @@
 
   <groupId>org.example</groupId>
   <artifactId>opagroupmapper</artifactId>
-  <version>0.1.0</version>
+  <version>0.2-SNAPSHOT</version>
 
   <name>opagroupmapper</name>
   <url>https://github.com/stackabletech/hadoop-opa-groupmapper</url>
