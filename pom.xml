@@ -6,11 +6,10 @@
 
   <groupId>org.example</groupId>
   <artifactId>opagroupmapper</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
 
   <name>opagroupmapper</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/stackabletech/hadoop-opa-groupmapper</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
