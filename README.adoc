@@ -9,7 +9,9 @@ That being said, as soon as this reaches a sort of stable state I will add infor
 
 === OPA
 
-Currently expects that Open Policy Agent is listening on http://localhost:8181. Run `opa run --server example.rego` in the repo folder to test an initial example.
+Currently expects that Open Policy Agent is serving group mappings on `http://localhost:8181/v1/data/app/rbac/get_groups`. Run `opa run --server example.rego` in the repo folder to test an initial example.
+
+If you want to override this default you can do this by defining a fully qualified opa uri (including rule) in the env var `HADOOP_OPA_GROUP_URI`.
 
 NOTE: The tests expect this example to be served under `localhost:8181` to be successful.
 

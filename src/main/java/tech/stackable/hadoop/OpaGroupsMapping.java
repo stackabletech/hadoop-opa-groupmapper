@@ -6,17 +6,34 @@ import org.apache.hadoop.security.GroupMappingServiceProvider;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.HashMap;
 import java.util.List;
 
 public class OpaGroupsMapping implements GroupMappingServiceProvider {
+    public static final String GROUPURIENVNAME = "HADOOP_OPA_GROUP_URI";
     private final HttpClient httpClient = HttpClient.newHttpClient();
     private final ObjectMapper json = new ObjectMapper();
 
-    private final URI opaGroupUri = URI.create("http://localhost:8181/v1/data/app/rbac/get_groups");
+    private final URI defaultOpaGroupUri = URI.create("http://localhost:8181/v1/data/app/rbac/get_groups");
+
+    private URI opaGroupUri;
+    public OpaGroupsMapping() {
+        String configuredUriString = System.getenv(GROUPURIENVNAME);
+        URI configuredUri = null;
+        if (configuredUriString != null) {
+            try {
+                configuredUri = new URI(configuredUriString);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+            this.opaGroupUri = configuredUri;
+        } else {
+            this.opaGroupUri = defaultOpaGroupUri;
+        }
+    }
 
     @SuppressWarnings("unused")
     private static class OpaQuery {
